@@ -1,17 +1,16 @@
-{% extends "layouts/base.html" %}
 {% load static %}
 
-{% block stylesheets %}
-    <!--  ======= CSS ======== -->
-    <link rel="stylesheet" href="{% static '/css/sidebar.css' %}">
 
-    <!--  ======= Box Icons ======== -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-{% endblock stylesheets %}
-
-
-{% block content %}
-
-{% endblock content %}
-
+<nav class="sidebar">
+    <header>
+        <div class="image-text">
+            <span class="image">
+                <img src="{% static '/images/logo.png' %}" alt="logo">
+            </span>
+        </div>
+        <div class="text header-text">
+            <span class="name">Coding Lab</span>
+            <span class="profession">Web Developer</span>
+        </div>
+    </header>
+</nav>
