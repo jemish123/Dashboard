@@ -27,7 +27,7 @@
 body {
     height: 100vh;
     background: var(--body-color);
-    transition: var(--tran-04);
+    transition: var(--tran-05);
 }
 
 body.dark {
@@ -49,6 +49,12 @@ body.dark {
     width: 300px;
     padding: 10px 14px;
     background: var(--sidebar-color);
+    transition: var(--tran-04);
+    z-index: 100;
+}
+
+.sidebar.close {
+    width: 88px;
 }
 
 /* ======== Reusable CSS ======= */
@@ -56,12 +62,20 @@ body.dark {
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color);
+    transition: var(--tran-04);
+    white-space: nowrap;
+    opacity: 1;
+}
+
+.sidebar.close .text{
+    opacity: 0;
 }
 
 .sidebar .image {
-    min-width: 200px;
+    width: 60px;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .sidebar li {
@@ -91,14 +105,13 @@ body.dark {
 }
 
 .sidebar .image-text img {
-    width: 250px;
+    width: 50px;
     border-radius: 5px;
 }
 
 .sidebar header .image-text {
-    display: block;
+    display: flex;
     align-items: center;
-    text-align: center;
 }
 
 header .image-text .header-text {
@@ -107,16 +120,25 @@ header .image-text .header-text {
 }
 
 .header-text .name {
-    font-weight: 600;
-    display: block;
-    text-align: center;
+    font-weight: 800;
+    /* display: block;
+    text-align: center; */
+}
+
+.sidebar header .text {
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.header-text .profession {
+    margin-top: -2px;
 }
 
 .sidebar header .toggle {
     position: absolute;
     top: 50%;
     right: -25px;
-    transform: translateY(-50%);
+    transform: translateY(-50%) rotate(180deg);
     height: 30px;
     width: 30px;
     background: var(--primary-color);
@@ -126,10 +148,26 @@ header .image-text .header-text {
     border-radius: 50%;
     color: var(--sidebar-color);
     font-size: 22px;
+    transition: var(--tran-03);
+}
+
+.sidebar.close header .toggle {
+    transform: translateY(-50%);
+}
+
+body.dark .sidebar header .toggle {
+    background: var(--toggle-color);
+    color: var(--body-color);
+}
+
+.sidebar .menu {
+    margin-top: 50px;
 }
 
 .sidebar .searchbox {
     background: var(--primary-color-light);
+    border-radius: 6px;
+    transition: var(--tran-05);
 }
 
 .searchbox input {
@@ -138,7 +176,11 @@ header .image-text .header-text {
     outline: none;
     border: none;
     border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
     background: var(--primary-color-light);
+    transition: var(--tran-05);
+    color: var(--text-color);
 }
 
 .sidebar li a {
@@ -160,6 +202,11 @@ header .image-text .header-text {
     color: var(--sidebar-color);
 }
 
+body.dark .sidebar li a:hover .icon, 
+body.dark .sidebar li a:hover .text {
+    color: var(--text-color);
+}
+
 .sidebar .menu-bar {
     height: calc(100% - 90px);
     display: flex;
@@ -168,6 +215,8 @@ header .image-text .header-text {
 }
 
 .menu-bar .mode {
+    position: relative;
+    border-radius: 6px;
     background: var(--primary-color-light);
 }
 
@@ -180,19 +229,33 @@ header .image-text .header-text {
 
 .menu-bar .mode i {
     position: absolute;
+    transition: var(--tran-03);
 }
 
 .menu-bar .mode i.sun {
     opacity: 0;
 }
 
+body.dark .menu-bar .mode i.sun {
+    opacity: 1;
+}
+
+body.dark .menu-bar .mode i.moon {
+    opacity: 0;
+}
+
 .menu-bar .mode .toggle-switch {
+    position: absolute;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
     min-width: 60px;
     cursor: pointer;
+    border-radius: 6px;
+    background: var(--primary-color-light);
+    transition: var(--tran-05);
 }
 
 .toggle-switch .switch {
@@ -218,4 +281,25 @@ header .image-text .header-text {
 
 body.dark .switch::before {
     left: 24px;
+}
+
+.home {
+    position: relative;
+    left: 300px;
+    height: 100vh;
+    width: calc(100% - 300px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.home .text {
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-color);
+    padding: 15px 40px;
+}
+
+.sidebar.close ~ .home{
+    left: 88px;
+    width: calc(100% - 88px);
 }
