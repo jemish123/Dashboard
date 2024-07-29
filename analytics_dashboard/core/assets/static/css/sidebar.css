@@ -51,6 +51,7 @@ body.dark {
     background: var(--sidebar-color);
     transition: var(--tran-04);
     z-index: 100;
+    box-shadow: 2px 2px 2px #ccc;
 }
 
 .sidebar.close {
