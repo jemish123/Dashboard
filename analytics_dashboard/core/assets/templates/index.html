@@ -2,15 +2,93 @@
 {% load static %}
 
 
+{% comment %} ===================         Styles of the Page        =========================={% endcomment %}
 {% block stylesheets %}
     <!--  ======= CSS ======== -->
     <link rel="stylesheet" href="{% static '/css/sidebar.css' %}">
 
     <!--  ======= Box Icons ======== -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 {% endblock stylesheets %}
 
+
+{% comment %} ===================         Body of the Page        =========================={% endcomment %}
+{% block content %}
+    <div class="filter-form-container">
+        <form action="post">
+            {% csrf_token %}
+            <div class="filter-section">
+                <div id="filter-form-heading"><span>Filters</span></div>
+                
+                <label for="end_year" class="dropdown">End Year</label>
+                <label for="topic" class="dropdown">Topic</label>
+                <label for="sector" class="dropdown">Sector</label>
+                <label for="region" class="dropdown">Region</label>
+                <label for="country" class="dropdown">Country</label>
+                <select id="end_year" name="end_year" class="dropdown">
+                    <option value="" selected disabled=true>-- Select --</option>
+                    {% for end_year in filters.end_years %}
+                        <option value="{{ end_year }}">{{ end_year }}</option>
+                    {% endfor %}  
+                </select>
+    
+                <select id="topic" name="topic" class="dropdown">
+                    <option value="" selected disabled=true>-- Select --</option>
+                    {% for topic in filters.topics %}
+                        <option value="{{ topic }}">{{ topic }}</option>
+                    {% endfor %}  
+                </select>
+    
+                <select id="sector" name="sector" class="dropdown">
+                    <option value="" selected disabled=true>-- Select --</option>
+                    {% for sector in filters.sectors %}
+                        <option value="{{ sector }}">{{ sector }}</option>
+                    {% endfor %}  
+                </select>
+    
+                <select id="region" name="region" class="dropdown">
+                    <option value="" selected disabled=true>-- Select --</option>
+                    {% for region in filters.regions %}
+                        <option value="{{ region }}">{{ region }}</option>
+                    {% endfor %}  
+                </select>
+
+                <select id="country" name="country" class="dropdown">
+                    <option value="" selected disabled=true>-- Select --</option>
+                    {% for country in filters.countries %}
+                        <option value="{{ country }}">{{ country }}</option>
+                    {% endfor %}  
+                </select>
+
+                <label for="source" class="dropdown source">Source</label>
+                <label for="pestle" class="dropdown pestle">Pestle</label>
+
+                <select id="pestle" name="pestle" class="dropdown pestle">
+                    <option value="" selected disabled=true>-- Select --</option>
+                    {% for pestle in filters.pestles %}
+                        <option value="{{ pestle }}">{{ pestle }}</option>
+                    {% endfor %}  
+                </select>
+                <select id="source" name="source" class="source dropdown">
+                    <option value="" selected disabled=true>-- Select --</option>
+                    {% for source in filters.sources %}
+                        <option value="{{ source }}">{{ source }}</option>
+                    {% endfor %}  
+                </select>
+            </div>
+        </form>
+    </div>
+
+    
+    {% for record in records %}
+        <pre>{{ record.end_year }}</pre>
+    {% endfor %}
+        
+        
+{% endblock content %}
+
+
+{% comment %} ===================         JS of the Page        =========================={% endcomment %}
 {% block scripts %}
     <script src="{% static '/js/sidebar.js' %}"></script>
 {% endblock scripts %}

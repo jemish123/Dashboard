@@ -15,9 +15,12 @@
 <body>
     <div>
         {% include 'layouts/sidebar.html' %}
-        {% block content %}
+        <section class="home">
+            <div class="text">Dashboard</div>
+            {% block content %}
             
-        {% endblock content %} 
+            {% endblock content %}
+        </section> 
     </div>
 </body>
     {% block scripts %}
