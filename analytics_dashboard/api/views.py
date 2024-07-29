@@ -22,12 +22,9 @@ def index(request):
 
     #         values = (record['sector'], record['topic'], record['insight'], record['url'], record['region'], record['country'], record['title'], record['end_year'], record['intensity'],
     #                   record['start_year'], record['impact'], record['added'], record['published'], record['relevance'], record['pestle'], record['source'], record['likelihood'])
-    #         sql = """
-    #                 INSERT INTO jsondatatable(sector, topic, insight, url, region, country, title, end_year, intensity, start_year, impact, added, published, relevance, pestle, source, likelihood)
-    #                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-    #               """
+    #         sql = "ALTER TABLE jsondatatable ADD COLUMN id serial primary key;"
 
-    #         cur.execute(sql, values)
+    #         cur.execute(sql)
     #         conn.commit()
     # except Exception as e:
     #     print(e)
